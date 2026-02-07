@@ -5,6 +5,7 @@ import math
 from player import Player
 from fishingSpot import FishingSpot
 from fishingManager import FishingManager
+from fishingMiniGame import FishingMiniGame
 
 
 class Game:
@@ -52,7 +53,8 @@ class Game:
             spot = self.fishingManager.closest_spot
             self.game_window.blit(text, (spot.x - 80, spot.y - 60))
 
-        pygame.display.update()
+        if self.fishingManager.minigame:
+            self.fishingManager.minigame.draw(self.game_window)
 
     def run_game_loop(self):
 
@@ -64,8 +66,12 @@ class Game:
                     return
                 else:
                     pass
-            
+
             self.fishingManager.update()
-            self.player.update()                  
+            if not self.fishingManager.minigame:
+                self.player.update()     
+
             self.draw_objects()
+
+            pygame.display.update()
             self.clock.tick(60)           

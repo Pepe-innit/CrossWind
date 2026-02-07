@@ -2,6 +2,7 @@ import pygame
 import math
 import random
 from fishingSpot import FishingSpot
+from fishingMiniGame import FishingMiniGame
 
 class FishingManager:
 
@@ -10,9 +11,21 @@ class FishingManager:
         self.fishing_spots = fishing_spots
         self.width = width
         self.height = height
-
+        self.minigame = None
 
     def update(self):
+
+        if self.minigame:
+            result = self.minigame.update()
+
+            if result == "success":
+                print("Fish caught!")
+                self.minigame = None
+            elif result == "fail":
+                print("Fish lost!")
+                self.minigame = None
+            return
+
         self.closest_spot = None
 
         if not self.fishing_spots:
@@ -24,7 +37,8 @@ class FishingManager:
             distance = math.dist((self.player.x, self.player.y), (spot.x, spot.y))
             
             if distance < 200 and keys[pygame.K_e]:
-                print("Fish caught!")
+                if self.minigame is None:
+                    self.minigame = FishingMiniGame(self.width, self.height)
                 self.fishing_spots.remove(spot)
                 self.spawn_new_spot()
             elif distance < 200:
@@ -50,6 +64,6 @@ class FishingManager:
 
             if not too_close:
                 break
-            
+
         new_spot = FishingSpot(x, y , spot_width, spot_height)
         self.fishing_spots.append(new_spot)
