@@ -4,8 +4,16 @@ from gameObject import GameObject
 
 class Player(GameObject):
 
-    def __init__(self, x , y, width, height, image_path = None):
+    def __init__(self, x , y, width, height, screen_width, screen_height, image_path = None):
         super().__init__(x, y, width, height, image_path = None)
+
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.radius = min(self.width, self.height) /2
+        self.screen_width = screen_width
+        self.screen_height = screen_height
 
         self.angle = 270
         self.speed = 4
@@ -29,6 +37,17 @@ class Player(GameObject):
             rad = math.radians(self.angle)
             self.x += math.cos(rad) * self.speed
             self.y += math.sin(rad) * self.speed
+
+        #Collisions
+        if self.x - self.radius < 0:
+            self.x = self.radius
+        if self.x + self.radius > self.screen_width:
+            self.x = self.screen_width - self.radius
+        
+        if self.y - self.radius < 0:
+            self.y = self.radius
+        if self.y + self.radius > self.screen_height:
+            self.y = self.screen_height - self.radius
         
     def draw(self, screen):
         if self.image:

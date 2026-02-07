@@ -17,7 +17,7 @@ class Game:
 
         self.clock = pygame.time.Clock()
         
-        self.player = Player(self.width/2, self.height/2, 200, 100)
+        self.player = Player(self.width/2, self.height/2, 200, 100, self.width, self.height)
 
         #Fishing spots generation
         self.font = pygame.font.SysFont(None, 36)
@@ -25,12 +25,18 @@ class Game:
         spot_height = 50
 
         self.fishingSpots = [
-            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width), random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height), spot_width, spot_height),
-            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width), random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height), spot_width, spot_height),
-            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width), random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height), spot_width, spot_height)
+            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width),
+                        random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height),
+                        spot_width, spot_height),
+            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width),
+                        random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height),
+                        spot_width, spot_height),
+            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width),
+                        random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height),
+                        spot_width, spot_height)
         ]
 
-        self.fishingManager = FishingManager(self.player, self.fishingSpots)
+        self.fishingManager = FishingManager(self.player, self.fishingSpots, self.width, self.height)
 
 #--- Methods ---        
     def draw_objects(self):
