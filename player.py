@@ -10,6 +10,7 @@ class Player(GameObject):
         self.angle = 270
         self.speed = 4
         self.rotation_speed = 1
+        self.color = (84, 59, 26)
 
     #--- Methods --- 
 

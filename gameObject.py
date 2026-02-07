@@ -8,7 +8,7 @@ class GameObject:
         self.y = y
         self.width = width
         self.height = height
-        self.color = (84, 59, 26)
+        
 
         if image_path:
             base_path = os.path.dirname(__file__)

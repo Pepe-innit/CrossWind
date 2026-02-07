@@ -1,11 +1,13 @@
 import pygame
 import sys
+import random
+import math
 from player import Player
-
+from fishingSpot import FishingSpot
+from fishingManager import FishingManager
 
 
 class Game:
-
     def __init__(self):
         self.width = 1728
         self.height = 972
@@ -17,11 +19,32 @@ class Game:
         
         self.player = Player(self.width/2, self.height/2, 200, 100)
 
+        #Fishing spots generation
+        self.font = pygame.font.SysFont(None, 36)
+        spot_width = 100
+        spot_height = 50
+
+        self.fishingSpots = [
+            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width), random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height), spot_width, spot_height),
+            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width), random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height), spot_width, spot_height),
+            FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width), random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height), spot_width, spot_height)
+        ]
+
+        self.fishingManager = FishingManager(self.player, self.fishingSpots)
+
 #--- Methods ---        
     def draw_objects(self):
         self.game_window.fill(self.background_colour)
 
+        for spot in self.fishingSpots:
+            spot.draw(self.game_window)
+
         self.player.draw(self.game_window)
+
+        if self.fishingManager.closest_spot:
+            text = self.font.render("Press E to catch fish", True, (0, 0, 0))
+            spot = self.fishingManager.closest_spot
+            self.game_window.blit(text, (spot.x - 80, spot.y - 60))
 
         pygame.display.update()
 
@@ -36,8 +59,7 @@ class Game:
                 else:
                     pass
             
-            self.player.update()
-                    
+            self.fishingManager.update()
+            self.player.update()                  
             self.draw_objects()
-
-            self.clock.tick(100)
+            self.clock.tick(60)           
