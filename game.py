@@ -18,23 +18,23 @@ class Game:
 
         self.clock = pygame.time.Clock()
         
-        self.player = Player(self.width/2, self.height/2, 200, 100, self.width, self.height)
+        self.player = Player(self.width/2, self.height/2, 16*10, 16*10, self.width, self.height, 'assets/CrossWinds_Boat.png')
 
         #Fishing spots generation
         self.font = pygame.font.SysFont(None, 36)
-        spot_width = 100
-        spot_height = 50
+        spot_width = 32*4
+        spot_height = 32*4
 
         self.fishingSpots = [
             FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width),
                         random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height),
-                        spot_width, spot_height),
+                        spot_width, spot_height, 'assets/CrossWinds_Bubbles.png'),
             FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width),
                         random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height),
-                        spot_width, spot_height),
+                        spot_width, spot_height, 'assets/CrossWinds_Bubbles.png'),
             FishingSpot(random.uniform(self.width/100 + spot_width, self.width - 10 - spot_width),
                         random.uniform(self.height/100 + spot_height, self.height - 10 - spot_height),
-                        spot_width, spot_height)
+                        spot_width, spot_height, 'assets/CrossWinds_Bubbles.png')
         ]
 
         self.fishingManager = FishingManager(self.player, self.fishingSpots, self.width, self.height)

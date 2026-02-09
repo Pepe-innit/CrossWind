@@ -5,7 +5,7 @@ from gameObject import GameObject
 class Player(GameObject):
 
     def __init__(self, x , y, width, height, screen_width, screen_height, image_path = None):
-        super().__init__(x, y, width, height, image_path = None)
+        super().__init__(x, y, width, height, image_path)
 
         self.x = x
         self.y = y

@@ -46,8 +46,8 @@ class FishingManager:
                 break
     
     def spawn_new_spot(self):
-        spot_width = 100
-        spot_height = 50
+        spot_width = 32*4
+        spot_height = 32*4
         MIN_DISTANCE = 200
 
         while True:
@@ -65,5 +65,5 @@ class FishingManager:
             if not too_close:
                 break
 
-        new_spot = FishingSpot(x, y , spot_width, spot_height)
+        new_spot = FishingSpot(x, y , spot_width, spot_height, 'assets/CrossWinds_Bubbles.png')
         self.fishing_spots.append(new_spot)

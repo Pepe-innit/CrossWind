@@ -9,7 +9,7 @@ class FishingMiniGame:
         self.balance = 0
         self.fish_force = 0
         self.balance_speed = 1.2
-        self.fish_force_speed = 0.15
+        self.fish_force_speed = random.uniform(0.1, 0.2)
         self.max_balance = 100
         
         self.catch_progress = 0
