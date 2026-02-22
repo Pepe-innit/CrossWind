@@ -1,6 +1,7 @@
 import pygame
 import math
 from gameObject import GameObject
+from inventory  import Inventory
 
 class Player(GameObject):
 
@@ -20,7 +21,14 @@ class Player(GameObject):
         self.rotation_speed = 1
         self.color = (84, 59, 26)
 
-    #--- Methods --- 
+        self.vel_x = 0
+        self.vel_y = 0
+        self.friction = 0.95
+        self.acceleration = 0.4
+
+        self.inventory = Inventory()
+
+    #------------ Methods ------------ 
 
     #--- Movement --- 
     def update(self):
@@ -35,8 +43,14 @@ class Player(GameObject):
         #Moving Forwards
         if keys[pygame. K_w]:
             rad = math.radians(self.angle)
-            self.x += math.cos(rad) * self.speed
-            self.y += math.sin(rad) * self.speed
+            self.vel_x += math.cos(rad) * self.acceleration
+            self.vel_y += math.sin(rad) * self.acceleration
+        
+        self.vel_x *= self.friction
+        self.vel_y *= self.friction
+
+        self.x += self.vel_x
+        self.y += self.vel_y
 
         #Collisions
         if self.x - self.radius < 0:

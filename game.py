@@ -43,16 +43,27 @@ class Game:
     def draw_objects(self):
         self.game_window.fill(self.background_colour)
 
+        #--- Fishing Spot Display ---
         for spot in self.fishingSpots:
             spot.draw(self.game_window)
 
+        #--- Player Display ---
         self.player.draw(self.game_window)
 
+        #--- Hint Display ---
         if self.fishingManager.closest_spot:
             text = self.font.render("Press E to catch fish", True, (0, 0, 0))
             spot = self.fishingManager.closest_spot
             self.game_window.blit(text, (spot.x - 80, spot.y - 60))
 
+        #--- Inventory Display ---
+        y = 10
+        for name, amount in self.player.inventory.get_items().items():
+            text = self.font.render(f"{name}: {amount}", True, (0, 0, 0))
+            self.game_window.blit(text, (10, y))
+            y += 30
+
+        #--- Minigame Display ---
         if self.fishingManager.minigame:
             self.fishingManager.minigame.draw(self.game_window)
 

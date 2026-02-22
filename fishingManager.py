@@ -13,6 +13,8 @@ class FishingManager:
         self.height = height
         self.minigame = None
 
+        self.Fishes = ["Bass", "Catfish", "Carp", "Fortinte Flopper"]
+
     def update(self):
 
         if self.minigame:
@@ -20,6 +22,8 @@ class FishingManager:
 
             if result == "success":
                 print("Fish caught!")
+                fish = random.choices(self.Fishes, weights=[100, 30, 70, 10], k=1)[0]
+                self.player.inventory.add_item(fish)
                 self.minigame = None
             elif result == "fail":
                 print("Fish lost!")

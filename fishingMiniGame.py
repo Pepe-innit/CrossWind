@@ -63,7 +63,7 @@ class FishingMiniGame:
         screen.blit(progress_text, (center_x - progress_text.get_width() // 2, center_y + 80))
 
         #Grey bar
-        pygame.draw.rect(screen, (50, 50, 50), (center_x - 150, center_y, 300, 20), border_radius =10)
+        pygame.draw.rect(screen, (50, 50, 50), (center_x - 150, center_y, 300, 20), border_radius =2)
         #Target bar
         pygame.draw.rect(screen, (0, 200, 0), (center_x - 40, center_y, 80, 20),)
         pygame.draw.rect(screen, (0, 255, 0), (center_x - 40, center_y, 80, 20), 3,) #Target bar outline
@@ -75,6 +75,6 @@ class FishingMiniGame:
         pygame.draw.rect(screen, (255, 255, 255), (indicator_x - 7, center_y - 12, 14, 44), 2, border_radius=7)
 
         #Progress bar
-        pygame.draw.rect(screen, (80, 80, 80), (center_x - 150, center_y + 50, 300, 20), border_radius=10)
+        pygame.draw.rect(screen, (50, 50, 50), (center_x - 150, center_y + 35, 300, 20), border_radius=2)
         progress_width = (self.catch_progress / self.catch_goal) * 300
-        pygame.draw.rect(screen, (200, 100, 50), (center_x - 150, center_y + 50, progress_width, 20), border_radius=10)
+        pygame.draw.rect(screen, (255, 0, 0), (center_x - 150, center_y + 35, progress_width, 20), border_radius=2)
