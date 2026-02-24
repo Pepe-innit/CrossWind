@@ -18,7 +18,7 @@ class Game:
 
         self.clock = pygame.time.Clock()
         
-        self.player = Player(self.width/2, self.height/2, 16*10, 16*10, self.width, self.height, 'assets/CrossWinds_Boat.png')
+        self.player = Player(self.width/2, self.height/2, 16*10, 16*10, self.width, self.height, 'assets/CrossWinds_Fisherman.png')
 
         self.dock = Dock(0, self.height/ 2, self.width/ 10, self.height/10)
 
