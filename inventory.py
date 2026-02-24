@@ -1,21 +1,16 @@
 
 class Inventory:
     def __init__(self):
-        self.items = {}
+        self.items = []
 
 #--- Methods ---
 
-    def add_item(self, name, ammount=1):
-        if name in self.items:
-            self.items[name] += ammount
-        else:
-            self.items[name] = ammount
+    def add_item(self, item):
+        self.items.append(item)
 
-    def remove_item(self, name, ammount=1):
-        if name in self.items:
-            self.items[name] -= ammount
-            if self.items[name] <= 0:
-                del self.items[name]
+    def remove_item(self, item):
+        if item in self.items:
+            self.items.remove(item)
 
     def get_items(self):
         return self.items

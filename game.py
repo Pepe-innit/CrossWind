@@ -20,7 +20,9 @@ class Game:
         
         self.player = Player(self.width/2, self.height/2, 16*10, 16*10, self.width, self.height, 'assets/CrossWinds_Boat.png')
 
-        self.dock = Dock(0, self.height/ 2, 50, 150)
+        self.dock = Dock(0, self.height/ 2, self.width/ 10, self.height/10)
+
+        self.inventory_positions = []
 
         #Fishing spots generation
         self.font = pygame.font.SysFont(None, 36)
@@ -55,23 +57,44 @@ class Game:
         #--- Player Display ---
         self.player.draw(self.game_window)
 
+        #--- Inventory Display ---
+        self.draw_inventory()
+
         #--- Hint Display ---
         if self.fishingManager.closest_spot:
             text = self.font.render("Press E to catch fish", True, (0, 0, 0))
             spot = self.fishingManager.closest_spot
             self.game_window.blit(text, (spot.x - 80, spot.y - 60))
 
-        #--- Inventory Display ---
-        y = 10
-        for name, amount in self.player.inventory.get_items().items():
-            text = self.font.render(f"{name}: {amount}", True, (0, 0, 0))
-            self.game_window.blit(text, (10, y))
-            y += 30
-
         #--- Minigame Display ---
         if self.fishingManager.minigame:
             self.fishingManager.minigame.draw(self.game_window)
 
+
+    #--- Inventory ---
+    def draw_inventory(self):
+        items = self.player.inventory.get_items()
+        if not items:
+            return
+            
+        icon_size = 64
+        spacing = 10
+
+        total_width = len(items) * (icon_size + spacing)
+        start_x = (self.width - total_width) // 2
+        y = self.height - icon_size - 20
+
+        self.inventory_positions = []
+
+        for i, fish in enumerate(items):
+            x = start_x + i * (icon_size + spacing)
+
+            self.game_window.blit(fish.image, (x, y))
+
+            rect = pygame.Rect(x, y, icon_size, icon_size)
+            self.inventory_positions.append((rect, fish))
+
+    #--- Game loop ---
     def run_game_loop(self):
 
         while True:

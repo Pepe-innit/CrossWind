@@ -3,6 +3,7 @@ import math
 import random
 from fishingSpot import FishingSpot
 from fishingMiniGame import FishingMiniGame
+from fish import Fish
 
 class FishingManager:
 
@@ -13,7 +14,7 @@ class FishingManager:
         self.height = height
         self.minigame = None
 
-        self.Fishes = ["Bass", "Catfish", "Carp", "Fortinte Flopper"]
+        self.Fishes = ["Bass", "Catfish", "Carp", "Flopper"]
 
     def update(self):
 
@@ -22,8 +23,11 @@ class FishingManager:
 
             if result == "success":
                 print("Fish caught!")
-                fish = random.choices(self.Fishes, weights=[100, 30, 70, 10], k=1)[0]
-                self.player.inventory.add_item(fish)
+
+                fish_name = random.choices(self.Fishes, weights=[100, 30, 70, 10], k=1)[0]
+                fish_obj = Fish(fish_name)
+                self.player.inventory.add_item(fish_obj)
+
                 self.minigame = None
             elif result == "fail":
                 print("Fish lost!")
