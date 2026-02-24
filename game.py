@@ -6,7 +6,7 @@ from player import Player
 from fishingSpot import FishingSpot
 from fishingManager import FishingManager
 from fishingMiniGame import FishingMiniGame
-
+from dock import Dock
 
 class Game:
     def __init__(self):
@@ -19,6 +19,8 @@ class Game:
         self.clock = pygame.time.Clock()
         
         self.player = Player(self.width/2, self.height/2, 16*10, 16*10, self.width, self.height, 'assets/CrossWinds_Boat.png')
+
+        self.dock = Dock(0, self.height/ 2, 50, 150)
 
         #Fishing spots generation
         self.font = pygame.font.SysFont(None, 36)
@@ -46,6 +48,9 @@ class Game:
         #--- Fishing Spot Display ---
         for spot in self.fishingSpots:
             spot.draw(self.game_window)
+        
+        #--- Dock Entry Display ---
+        self.dock.draw(self.game_window)
 
         #--- Player Display ---
         self.player.draw(self.game_window)
