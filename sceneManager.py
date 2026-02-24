@@ -5,6 +5,7 @@ class SceneManager:
         self.main_menu = None
         self.game_scene = None
         self.shop_scene = None
+
     #--- Methods ---
 
     def set_scene(self, scene):
