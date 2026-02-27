@@ -10,10 +10,10 @@ class Fish:
     }
 
     IMAGE_PATHS = {
-        "Bass": "assets/CrossWinds_Bass.png",
-        "Carp": "assets/CrossWinds_Carp.png",
-        "Catfish": "assets/CrossWinds_Catfish.png",
-        "Flopper": "assets/CrossWinds_Flopper.png"
+        "Bass": "assets/CrossWinds_BassRAR.png",
+        "Carp": "assets/CrossWinds_CarpRAR.png",
+        "Catfish": "assets/CrossWinds_CatfishRAR.png",
+        "Flopper": "assets/CrossWinds_FlopperRAR.png"
     }
 
 

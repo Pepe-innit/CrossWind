@@ -1,7 +1,6 @@
 import pygame
 from sceneManager import SceneManager
 from mainMenu import MainMenu
-
 from gameScene import GameScene
 from mainMenu import MainMenu
 from shopScene import ShopScene

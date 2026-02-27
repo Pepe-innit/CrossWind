@@ -5,7 +5,6 @@ import math
 from player import Player
 from fishingSpot import FishingSpot
 from fishingManager import FishingManager
-from fishingMiniGame import FishingMiniGame
 from dock import Dock
 
 class Game:

@@ -24,7 +24,7 @@ class FishingManager:
             if result == "success":
                 print("Fish caught!")
 
-                fish_name = random.choices(self.Fishes, weights=[100, 30, 70, 1], k=1)[0]
+                fish_name = random.choices(self.Fishes, weights=[100, 40, 70, 1], k=1)[0]
                 fish_obj = Fish(fish_name)
                 self.player.inventory.add_item(fish_obj)
 
