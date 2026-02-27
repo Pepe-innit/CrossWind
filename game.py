@@ -1,7 +1,5 @@
 import pygame
-import sys
 import random
-import math
 from player import Player
 from fishingSpot import FishingSpot
 from fishingManager import FishingManager
@@ -19,7 +17,7 @@ class Game:
         
         self.player = Player(self.width/2, self.height/2, 16*10, 16*10, self.width, self.height, 'assets/CrossWinds_Fisherman.png')
 
-        self.dock = Dock(0, self.height/ 2, self.width/ 10, self.height/10)
+        self.dock = Dock(0, self.height/ 2 - 80, 16*10, 16*10, "assets/CrossWinds_Dock.png")
 
         self.inventory_positions = []
 
@@ -49,12 +47,12 @@ class Game:
         #--- Fishing Spot Display ---
         for spot in self.fishingSpots:
             spot.draw(self.game_window)
-        
-        #--- Dock Entry Display ---
-        self.dock.draw(self.game_window)
 
         #--- Player Display ---
         self.player.draw(self.game_window)
+
+        #--- Dock Entry Display ---
+        self.dock.draw(self.game_window)
 
         #--- Inventory Display ---
         self.draw_inventory()

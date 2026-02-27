@@ -1,9 +1,12 @@
 import pygame
 
 class Dock:
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, image_path):
         self.rect = pygame.Rect(x, y, width, height)
-        self.color = (120, 80, 40)
+        
+
+        self.image = pygame.image.load(image_path).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (width, height))
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, self.rect)
+        screen.blit(self.image, self.rect.topleft)
