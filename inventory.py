@@ -2,8 +2,8 @@
 class Inventory:
     def __init__(self):
         self.items = []
-        self.max_items = 10
-        self.max_weight = 25.0
+        self.max_items = 5
+        self.max_weight = 10.0
 
 #--- Methods ---
     def get_total_weight(self):
