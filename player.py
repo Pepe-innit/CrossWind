@@ -26,6 +26,9 @@ class Player(GameObject):
         self.friction = 0.95
         self.acceleration = 0.4
 
+        self.money = 0
+        self.fishing_upgrade = False
+
         self.inventory = Inventory()
 
     #------------ Methods ------------ 

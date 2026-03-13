@@ -29,3 +29,6 @@ class Inventory:
 
     def get_items(self):
         return self.items
+    
+    def get_total_value(self):
+        return self.get_total_weight() * 10

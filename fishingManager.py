@@ -49,6 +49,7 @@ class FishingManager:
             if distance < 200 and keys[pygame.K_e]:
                 if self.minigame is None:
                     self.minigame = FishingMiniGame(self.width, self.height)
+                    self.minigame.upgrade = self.player.fishing_upgrade
                 self.fishing_spots.remove(spot)
                 self.spawn_new_spot()
             elif distance < 200:

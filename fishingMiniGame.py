@@ -9,13 +9,17 @@ class FishingMiniGame:
         self.balance = 0
         self.fish_force = 0
         self.balance_speed = 1.2
-        self.fish_force_speed = random.uniform(0.1, 0.2)
         self.max_balance = 100
         
         self.catch_progress = 0
         self.catch_goal = 200
 
         self.active = True
+
+        if hasattr(self, "upgrade") and self.upgrade:
+            self.fish_force_speed = random.uniform(0.05, 0.1)
+        else:
+            self.fish_force_speed = random.uniform(0.1, 0.2)
 
 
     def update(self):
