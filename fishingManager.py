@@ -26,7 +26,9 @@ class FishingManager:
 
                 fish_name = random.choices(self.Fishes, weights=[100, 70, 40, 1], k=1)[0]
                 fish_obj = Fish(fish_name)
-                self.player.inventory.add_item(fish_obj)
+                added = self.player.inventory.add_item(fish_obj)
+                if not added:
+                    print("You couldn't carry the fish. It was released.")
 
                 self.minigame = None
             elif result == "fail":
