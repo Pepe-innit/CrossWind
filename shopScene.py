@@ -6,9 +6,9 @@ class ShopScene(Scene):
         self.manager = manager
         self.font = pygame.font.SysFont(None,60)
 
-        self.sell_button = pygame.Rect(200, 200, 300, 80)
-        self.upgrade_boat_button = pygame.Rect(200, 320, 300, 80)
-        self.upgrade_rod_button = pygame.Rect(200, 440, 300, 80)
+        self.sell_button = pygame.Rect(200, 200, 370, 80)
+        self.upgrade_boat_button = pygame.Rect(200, 320, 370, 80)
+        self.upgrade_rod_button = pygame.Rect(200, 440, 370, 80)
 
     def handle_events(self, events):
           for event in events:
